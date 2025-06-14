@@ -3,7 +3,10 @@ import express from 'express';
 import dotenv from 'dotenv';
 dotenv.config();
 import cors from 'cors';
-import connectDB from './db/connections.js';
+import {connectDB} from './db/connections.js';
+
+//Import Routers
+import HomeSecondSectionRouter from './Routes/HomeSecondSectionRoute.js';
 
 const app = express();
 const PORT = process.env.PORT || 8080;
@@ -12,6 +15,9 @@ const PORT = process.env.PORT || 8080;
 app.use(cors());
 app.use(express.json());
 
+
+//Route for admin
+app.use('/home-second-section', HomeSecondSectionRouter);
 
 app.get('/',(req,res)=>{
     res.send("connected");

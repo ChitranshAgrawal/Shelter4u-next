@@ -4,6 +4,9 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 
+// IMPORTING SCHEMA
+import HomeSecondSectionSchema from '../Models/HomeSecondSection.js';
+
 // CONNECTION STRINGS
 const mongo_url = process.env.MONGO_CONN;
 const mongo_url_admin = process.env.MONGO_CONN_ADMIN;
@@ -12,7 +15,11 @@ const mongo_url_admin = process.env.MONGO_CONN_ADMIN;
 const conn = mongoose.createConnection(mongo_url, {});
 const admin_conn = mongoose.createConnection(mongo_url_admin, {});
 
-const connectDB = async () => {
+//MODELS
+const HomeSecondSection = admin_conn.model('HomeSecondSection', HomeSecondSectionSchema);
+
+
+export const connectDB = async () => {
   try {
     await conn.asPromise();
     console.log("✅ Connected to CRM DB");
@@ -24,4 +31,10 @@ const connectDB = async () => {
   }
 };
 
-export default connectDB;
+const models ={
+  conn,
+  admin_conn,
+  HomeSecondSection
+}
+
+export default models;
