@@ -3,6 +3,8 @@ import Recommended from "./Recommended.jsx";
 import HomeThirdSection from "./HomeThirdSection.jsx";
 import HomeFourthSection from "./HomeFourthSection.jsx";
 import HomeFifthSection from "./HomeFifthSection.jsx";
+import Head from "../Components/Header.jsx";
+import Header from "../Components/Header.jsx";
 
 export default async function HomePage() {
   let section = null;
@@ -28,6 +30,7 @@ export default async function HomePage() {
 
   return (
     <>
+    <Header/>
       {section && (
         <HomeSecondSection
           title={section?.title}
