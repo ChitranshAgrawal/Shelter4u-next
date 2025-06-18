@@ -50,14 +50,14 @@ const Footer = ({ footerData }) => {
             <ul className="space-y-3">
               {[
                 { name: "Home", path: "/" },
-                { name: "Loans For NRIs", path: "/loans-for-nris" },
-                { name: "Legal Information", path: "/legal-information" },
-                { name: "Inquiry", path: "/inquiry" },
-                { name: "Career", path: "/career" },
-                { name: "Team", path: "/team" },
-                { name: "Event Photo Gallery", path: "/gallery" },
-                { name: "Contact Us", path: "/contact" },
-                { name: "Privacy Policy", path: "/privacy-policy" },
+                { name: "Loans For NRIs", path: "/others/loansForNRI" },
+                { name: "Legal Information", path: "/others/legalInfo" },
+                { name: "Inquiry", path: "/Inquiry" },
+                { name: "Career", path: "/about/career" },
+                { name: "Team", path: "/about/team" },
+                { name: "Event Photo Gallery", path: "/about/event" },
+                { name: "Contact Us", path: "/contactus" },
+                { name: "Privacy Policy", path: "/about/privacyPolicy" },
               ].map(({ name, path }, index) => (
                 <li key={index} className="flex items-center group">
                   <span className="text-lg mr-2 text-gray-400">›</span>
