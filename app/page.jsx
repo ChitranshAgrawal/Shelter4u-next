@@ -30,7 +30,7 @@ export default async function HomePage() {
 
   return (
     <>
-    <Header/>
+    {/* <Header/> */}
       {section && (
         <HomeSecondSection
           title={section?.title}
@@ -49,7 +49,7 @@ export default async function HomePage() {
       />
       
       <HomeFifthSection partners={homeFifthSectionData} />
-      <Footer/>
+      {/* <Footer/> */}
       
     </>
   );

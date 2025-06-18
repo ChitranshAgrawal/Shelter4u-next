@@ -1,4 +1,6 @@
 import "./globals.css";
+import Header from "./Components/Header.jsx";
+import Footer from "./footer/page.jsx"; 
 
 export const metadata = {
   title: "Create Next App",
@@ -8,11 +10,15 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <Header/>
+
       <body
         className={'font-sans antialiased'}
       >
         {children}
       </body>
+
+      <Footer/>
     </html>
   );
 }
