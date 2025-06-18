@@ -47,20 +47,7 @@ export default async function Recommended() {
               className="shadow-sm rounded-lg hover:shadow-md bg-white rounded-xl shadow-lg"
             >
               <Cards
-                id={project._id}
-                projectName={project.title || project.projectName}
-                area={project.area}
-                priceMin={project.priceRange?.min}
-                priceMax={project.priceRange?.max}
-                projectType={project.propertyType || project.projectType}
-                images={project.coverImages}
-                builder={project.builder}
-                unitTypes={[
-                  ...new Set(project.projectSpecification?.map((spec) => spec.unitType)),
-                ].join(', ')}
-                reraNumber={project.reraNumber}
-                projectSpecification={project.projectSpecification}
-                status={project.status}
+                project={project}
               />
             </div>
           ))}

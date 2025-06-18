@@ -1,17 +1,13 @@
-// // app/api/footer/route.js
+import { NextResponse } from "next/server";
+import { models } from "../../../lib/connections.js";
+const {Footer} = models;
 
-// import { models } from "@/lib/connections";
-// const { Footer } = models;
-
-// export async function GET() {
-//   try {
-//     const footer = await Footer.findOne();
-//     if (!footer) {
-//       return new Response(JSON.stringify({ message: "Footer not found" }), { status: 404 });
-//     }
-
-//     return new Response(JSON.stringify(footer), { status: 200 });
-//   } catch (error) {
-//     return new Response(JSON.stringify({ message: error.message }), { status: 500 });
-//   }
-// }
+export async function GET() {
+    try {
+        const footer= await Footer.findOne();
+        return NextResponse.json({ success: true, footer }, { status: 200 });
+    } catch (error) {
+        console.error("Error fetching company profile:", error);
+        return NextResponse.json({ success: false, error: error.message }, { status: 500 });
+    }
+}

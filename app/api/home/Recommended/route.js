@@ -6,19 +6,7 @@ export async function GET(req) {
   try {
     // await connectToDBs();
 
-    const projects = await Project.find({}, {
-      projectName: 1,
-      area: 1,
-      builder: 1,
-      priceMin: 1,
-      priceMax: 1,
-      projectType: 1,
-      coverImages: 1,
-      reraNumber: 1,
-      projectSpecification: 1,
-      status: 1,
-      createdAt: 1,
-    })
+    const projects = await Project.find({})
       // .populate("area", ["_id", "name"])
       // .populate("builder", ["_id", "name"])
       .sort({ createdAt: -1 });
