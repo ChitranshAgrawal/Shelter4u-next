@@ -1,4 +1,4 @@
-import {models} from '@/lib/connections.js';
+import { models } from "../../../../lib/connections.js";
 // import { connectToDBs, Project, Area, Leads } from '@/lib/connections.js';
 const { Project, Area, Leads } = models;
 

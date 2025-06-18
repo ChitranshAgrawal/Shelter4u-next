@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { models } from "@/lib/connections.js";
+import { models } from "../../../../lib/connections.js";
 const {Event} = models;
 
 export async function GET() {
