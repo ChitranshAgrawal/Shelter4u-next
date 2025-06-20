@@ -10,7 +10,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <Header/>
+      {/* <Header/> */}
 
       <body
         className={'font-sans antialiased'}
@@ -18,7 +18,7 @@ export default function RootLayout({ children }) {
         {children}
       </body>
 
-      <Footer/>
+      {/* <Footer/> */}
     </html>
   );
 }
