@@ -7,7 +7,7 @@ const AboutProject = ({ project }) => {
       <h2 className="text-2xl font-semibold mb-6 text-gray-900">
         About This Project
       </h2>
-      <pre className="text-gray-700 mb-8 text-base leading-relaxed whitespace-pre-wrap">
+      <pre className="text-gray-700 mb-8 text-base leading-relaxed whitespace-pre-wrap font-sans">
         {project.description}
       </pre>
 
@@ -22,9 +22,9 @@ const AboutProject = ({ project }) => {
               className="flex items-center gap-4 bg-transparent rounded-lg hover:bg-gray-100 transition-colors"
             >
               <div className="bg-red-100 p-2 rounded-lg m-1">
-                <Check className="h-4 w-4 text-red-600" strokeWidth={3} />
+                <Check className="h-4 w-4 text-red-600 font-sans" strokeWidth={3} />
               </div>
-              <span className="text-gray-700 text-base">{usp}</span>
+              <span className="text-gray-700 text-base font-sans">{usp}</span>
             </div>
           ))}
         </ul>
