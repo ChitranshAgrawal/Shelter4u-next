@@ -3,13 +3,13 @@
 import React from "react";
 import { FaQuoteRight, FaUserAlt } from "react-icons/fa";
 
-const HomeFourthSection = ({ title, para, section = [] }) => {
+const HomeFourthSection = ( data ) => {
   return (
     <div className="w-full bg-gray-100 py-16 px-4 md:px-16 font-sans ">
       <div className="max-w-7xl mx-auto grid gap-12 items-center px-4 lg:grid-cols-2">
         {/* Left Side - Testimonials */}
         <div className="space-y-6 order-2 md:order-1 flex flex-col items-start ">
-          {section.map((testimonial, index) => {
+          {data.section.map((testimonial, index) => {
             const isActive = index === 1;
 
             return (
@@ -48,9 +48,9 @@ const HomeFourthSection = ({ title, para, section = [] }) => {
         {/* Right Side - Heading and Paragraph */}
         <div className="space-y-6 order-1 md:order-2 text-center md:text-left">
           <p className="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight">
-            {title}
+            {data.title}
           </p>
-          <p className="text-gray-600">{para}</p>
+          <p className="text-gray-600">{data.para}</p>
         </div>
       </div>
     </div>
