@@ -10,7 +10,7 @@ export async function GET(req) {
       .populate("area", ["_id", "name"])
       .populate("builder", ["_id", "name"])
       .sort({ createdAt: -1 });
-
+      
       // console.log(projects);
     return new Response(JSON.stringify({ success: true, data: projects }), {
       status: 200,

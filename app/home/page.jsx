@@ -24,6 +24,7 @@ export default async function HomePage() {
     homeFourthSectionData = json.finalData.HomeFourthSectionData[0];
     homeFifthSectionData = json.finalData.HomeFifthSectionData; 
 
+
   } catch (e) {
     console.error("Error loading Home data:", e);
   }
@@ -48,7 +49,7 @@ export default async function HomePage() {
         section={homeFourthSectionData?.section}
       />
       
-      <HomeFifthSection partners={homeFifthSectionData} />
+      <HomeFifthSection partners={json.finalData.HomeFifthSectionData} />
       
     </>
   );
