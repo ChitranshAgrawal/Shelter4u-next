@@ -11,6 +11,7 @@ function HomeFirstSection( { data } ) {
   const router = useRouter();
   const [location, setLocation] = useState("");
   const [city, setCity] = useState("");
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
   const [suggestions, setSuggestions] = useState({
     value: "",
     areas: [],
@@ -184,7 +185,7 @@ function HomeFirstSection( { data } ) {
 
                         try {
                           const res = await fetch(
-                            `${API_URI}/search/autocomplete?q=${value}`
+                            `${baseUrl}/api/search/autocomplete?q=${value}`
                           );
                           const data = await res.json();
                           setSuggestions({ ...data, value: value });
@@ -216,7 +217,7 @@ function HomeFirstSection( { data } ) {
                             if (city && city !== "All Cities") {  
                               params.set("city", city);
                             }
-                            navigate(`/projects?${params.toString()}`);
+                            router.push(`/projects?${params.toString()}`);
                             setSuggestions({
                               value: "",
                               areas: [],
@@ -242,7 +243,7 @@ function HomeFirstSection( { data } ) {
                                 if (city && city !== "All Cities") {
                                   params.set("city", city);
                                 }
-                                navigate(`/projects?${params.toString()}`);
+                                router.push(`/projects?${params.toString()}`);
                                 setSuggestions({
                                   value: "",
                                   areas: [],
@@ -269,7 +270,7 @@ function HomeFirstSection( { data } ) {
                               onClick={() => {
                                 const params = new URLSearchParams();
                                 params.set("city", city);
-                                navigate(`/projects?${params.toString()}`);
+                                router.push(`/projects?${params.toString()}`);
                                 setSuggestions({
                                   value: "",
                                   areas: [],
@@ -292,7 +293,7 @@ function HomeFirstSection( { data } ) {
                             <div
                               key={project._id}
                               onClick={() => {
-                                navigate(`/project-page/${project._id}`);
+                                router.push(`/project-page/${project._id}`);
                                 setSuggestions({
                                   value: "",
                                   areas: [],
