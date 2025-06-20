@@ -1,0 +1,29 @@
+import { NextResponse } from "next/server";
+import { models } from "../../../../lib/connections.js";
+const { Project } = models;
+
+export async function GET(req, { params }) {
+  try {
+    // Await params to resolve the Promise
+    const { id } = await params;
+
+    // Validate the id
+    if (!id) {
+      return NextResponse.json({ message: "Project ID is required" }, { status: 400 });
+    }
+
+    const project = await Project.findById(id);
+
+    if (!project) {
+      return NextResponse.json({ message: "Project not found" }, { status: 404 });
+    }
+
+    return NextResponse.json(project);
+  } catch (error) {
+    console.error("Error fetching project:", error);
+    return NextResponse.json({ error: "Internal server error" }, { status: 500 });
+  }
+}
+
+
+
