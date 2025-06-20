@@ -28,8 +28,7 @@ export default function RootLayout({ children }) {
     <html lang="en" className="font-main">
       {/* <Header/> */}
 
-      <body 
-      >
+      <body>
         {children}
       </body>
 
