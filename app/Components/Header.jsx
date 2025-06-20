@@ -82,7 +82,7 @@ function Header() {
         {/* Navigation Links - Desktop */}
         <div className="hidden xl:flex space-x-1 lg:space-x-2">
           <Link
-            href="/home"
+            href="/"
             className="px-3 py-2 relative group transition-colors duration-300 cursor-pointer font-normal"
           >
             Home
@@ -188,25 +188,25 @@ function Header() {
             {activeDropdown === "location" && (
               <div className="absolute left-0 w-48 bg-white rounded-md shadow-lg z-50 py-1 border border-gray-100 animate-fadeIn">
                 <Link
-                  href="/projects?city=ahmedabad"
+                  href="/search?city=ahmedabad"
                   className="block px-4 py-2 text-sm hover:bg-red-50 hover:text-red-600 text-gray-700 font-normal"
                 >
                   Ahmedabad
                 </Link>
                 <Link
-                  href="/projects?city=gandhinagar"
+                  href="/search?city=gandhinagar"
                   className="block px-4 py-2 text-sm hover:bg-red-50 hover:text-red-600 text-gray-700 font-normal"
                 >
                   Gandhinagar
                 </Link>
                 <Link
-                  href="/projects?city=pune"
+                  href="/search?city=pune"
                   className="block px-4 py-2 text-sm hover:bg-red-50 hover:text-red-600 text-gray-700 font-normal"
                 >
                   Pune
                 </Link>
                 <Link
-                  href="/projects?city=mumbai"
+                  href="/search?city=mumbai"
                   className="block px-4 py-2 text-sm hover:bg-red-50 hover:text-red-600 text-gray-700 font-normal"
                 >
                   Mumbai
@@ -245,19 +245,19 @@ function Header() {
             {activeDropdown === "type" && (
               <div className="absolute left-0 w-44 bg-white rounded-md shadow-lg z-50 py-1 border border-gray-100 animate-fadeIn">
                 <Link
-                  href="/projects?projectType=Residential"
+                  href="/search?projectType=Residential"
                   className="block px-4 py-2 text-sm hover:bg-red-50 hover:text-red-600 text-gray-700 font-normal"
                 >
                   Residential
                 </Link>
                 <Link
-                  href="/projects?projectType=Commercial"
+                  href="/search?projectType=Commercial"
                   className="block px-4 py-2 text-sm hover:bg-red-50 hover:text-red-600 text-gray-700 font-normal"
                 >
                   Commercial
                 </Link>
                 <Link
-                  href="/projects?projectType=Land"
+                  href="/search?projectType=Land"
                   className="block px-4 py-2 text-sm hover:bg-red-50 hover:text-red-600 text-gray-700 font-normal"
                 >
                   Land
@@ -448,28 +448,28 @@ function Header() {
               >
                 <div className="pl-4 py-1 bg-gray-50 rounded-md mt-1 mb-1 space-y-1">
                   <Link
-                    href="/projects?city=ahmedabad"
+                    href="/search?city=ahmedabad"
                     onClick={closeMobileMenu}
                     className="block px-3 py-1.5 text-sm hover:bg-red-50 hover:text-red-600 text-gray-700 rounded-md font-normal"
                   >
                     Ahmedabad
                   </Link>
                   <Link
-                    href="/projects?city=pune"
+                    href="/search?city=pune"
                     onClick={closeMobileMenu}
                     className="block px-3 py-1.5 text-sm hover:bg-red-50 hover:text-red-600 text-gray-700 rounded-md font-normal"
                   >
                     Pune
                   </Link>
                   <Link
-                    href="/projects?city=mumbai"
+                    href="/search?city=mumbai"
                     onClick={closeMobileMenu}
                     className="block px-3 py-1.5 text-sm hover:bg-red-50 hover:text-red-600 text-gray-700 rounded-md font-normal"
                   >
                     Mumbai
                   </Link>
                   <Link
-                    href="/projects?city=gandhinagar"
+                    href="/search?city=gandhinagar"
                     onClick={closeMobileMenu}
                     className="block px-3 py-1.5 text-sm hover:bg-red-50 hover:text-red-600 text-gray-700 rounded-md font-normal"
                   >
@@ -508,21 +508,21 @@ function Header() {
               >
                 <div className="pl-4 py-1 bg-gray-50 rounded-md mt-1 mb-1 space-y-1">
                   <Link
-                    href="/projects?projectType=Residential"
+                    href="/search?projectType=Residential"
                     onClick={closeMobileMenu}
                     className="block px-3 py-1.5 text-sm hover:bg-red-50 hover:text-red-600 text-gray-700 rounded-md font-normal"
                   >
                     Residential
                   </Link>
                   <Link
-                    href="/projects?projectType=Commercial"
+                    href="/search?projectType=Commercial"
                     onClick={closeMobileMenu}
                     className="block px-3 py-1.5 text-sm hover:bg-red-50 hover:text-red-600 text-gray-700 rounded-md font-normal"
                   >
                     Commercial
                   </Link>
                   <Link
-                    href="/projects?projectType=Plot"
+                    href="/search?projectType=Plot"
                     onClick={closeMobileMenu}
                     className="block px-3 py-1.5 text-sm hover:bg-red-50 hover:text-red-600 text-gray-700 rounded-md font-normal"
                   >

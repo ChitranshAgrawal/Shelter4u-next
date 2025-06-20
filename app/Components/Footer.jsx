@@ -80,7 +80,7 @@ const Footer = ({ footerData }) => {
                 <li key={index} className="flex items-center group">
                   <span className="text-lg mr-2 text-gray-400">›</span>
                   <Link
-                    href={`/projects?city=${city}`}
+                    href={`/search?city=${city}`}
                     className="text-gray-300 hover:text-purple-400 hover:underline"
                   >
                     {city}
@@ -98,7 +98,7 @@ const Footer = ({ footerData }) => {
                 <li key={index} className="flex items-center group">
                   <span className="text-lg mr-2 text-gray-400">›</span>
                   <Link
-                    href={`/projects?projectType=${type}`}
+                    href={`/search?projectType=${type}`}
                     className="text-gray-300 hover:text-purple-400 hover:underline"
                   >
                     {type}
