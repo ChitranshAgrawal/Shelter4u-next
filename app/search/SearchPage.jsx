@@ -13,13 +13,13 @@ import {
   FiTag,
 } from "react-icons/fi";
 
-const SearchPage = () => {
+const SearchPage = ({ initialProjects = [] }) => {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
   const router = useRouter();
   const searchParams = useSearchParams();
 
   const [searchQuery, setSearchQuery] = useState(searchParams.get("q") || "");
-  const [projects, setProjects] = useState([]);
+  const [projects, setProjects] = useState(initialProjects);
   const [showSuggestions, setShowSuggestions] = useState(false);
   const searchRef = useRef(null);
   const [filters, setFilters] = useState({
@@ -95,7 +95,7 @@ const SearchPage = () => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  // Fetch projects based on query
+  // Fetch projects based on query - only for client-side updates after initial load
   useEffect(() => {
     const fetchProjects = async () => {
       try {
@@ -110,8 +110,20 @@ const SearchPage = () => {
       }
     };
 
-    fetchProjects();
+    // Only fetch if we don't have initial projects or if search params changed
+    const currentQuery = searchParams.toString();
+    if (currentQuery) {
+      fetchProjects();
+    } else {
+      // If no search params, clear projects
+      setProjects([]);
+    }
   }, [searchParams.toString()]);
+
+  // Update projects when initialProjects prop changes (for SSR)
+  useEffect(() => {
+    setProjects(initialProjects);
+  }, [initialProjects]);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 py-12 px-4 sm:px-6 lg:px-8">
@@ -351,3 +363,7 @@ const SearchPage = () => {
 };
 
 export default SearchPage;
+
+
+
+
