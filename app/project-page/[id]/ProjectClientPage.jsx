@@ -1,69 +1,163 @@
 "use client";
 
 import { useState } from "react";
+import { X } from "lucide-react";
+
 import ProjectTabSwitcher from "../Components/ProjectPageTabSwitcher.jsx";
 import AmenitiesSection from "../Components/ProjectAmenities.jsx";
 import ProjectGallery from "../Components/ProjectGallery.jsx";
 import ProjectLocation from "../Components/ProjectLocation.jsx";
 import ProjectSpecificationTable from "../Components/ProjectSpecification.jsx";
-import { X } from "lucide-react";
+import ProjectHeroSlider from "../Components/ProjectPageHeroSilder.jsx"; 
+import ProjectHighlights from "../Components/overview/ProjectHighlights.jsx";
+import ProjectDescription from "../Components/overview/ProjectDescription.jsx";
+import ProjectLayoutPlans from "../Components/overview/ProjectLayoutPlans.jsx";
+import ProjectBrochure from "../Components/ProjectBroucher.jsx";
+import ProjectInquiryCard from "../Components/ProjectInquiryCard.jsx";  
 
 const ProjectClientPage = ({ project }) => {
   const [activeTab, setActiveTab] = useState("overview");
   const [showAllAmenities, setShowAllAmenities] = useState(false);
   const [expandedImage, setExpandedImage] = useState(null);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0); // Slider index
+  const [showFullForm, setShowFullForm] = useState(false);
 
   const toggleAmenities = () => setShowAllAmenities(!showAllAmenities);
   const openImageExpanded = (image) => setExpandedImage(image);
   const closeImageExpanded = () => setExpandedImage(null);
 
+  //  Image navigation handlers
+  const nextImage = () => {
+    setCurrentImageIndex((prev) =>
+      prev === project.coverImages.length - 1 ? 0 : prev + 1
+    );
+  };
+
+  const prevImage = () => {
+    setCurrentImageIndex((prev) =>
+      prev === 0 ? project.coverImages.length - 1 : prev - 1
+    );
+  };
+
   return (
-    <div className="px-6 py-12 max-w-7xl mx-auto">
-      {/* Navigation Tabs */}
-      <ProjectTabSwitcher activeTab={activeTab} setActiveTab={setActiveTab} />
+    <div className="bg-gray-50 font-sans">
+      {/*  Hero Slider at the top */}
+      <ProjectHeroSlider
+        project={project}
+        prevImage={prevImage}
+        nextImage={nextImage}
+        currentImageIndex={currentImageIndex}
+        setCurrentImageIndex={setCurrentImageIndex}
+      />
 
-      {/* Overview */}
-      {activeTab === "overview" && (
-        <div>
-          <h1 className="text-2xl font-bold mb-4">{project.projectName}</h1>
-          <p>{project.description}</p>
+      {/* Main Content */}
+      <div className="px-6 py-12 max-w-7xl mx-auto">
+        {/* Navigation Tabs - Modern Design */}
+        <ProjectTabSwitcher activeTab={activeTab} setActiveTab={setActiveTab} />
+
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
+          {/* Left Column - Main Content */}
+          <div className="lg:col-span-2 space-y-10">
+            {/* Overview Tab Content */}
+            {activeTab === "overview" && (
+              <>
+                {/* Highlights Section */}
+                <ProjectHighlights project={project} />
+
+                {/* Description Section */}
+                <ProjectDescription project={project} />
+
+                {/* Layout Plans Section */}
+                <ProjectLayoutPlans project={project} openImageExpanded={openImageExpanded} />
+
+                {/* Expanded Image Modal */}
+              
+                {expandedImage && (
+                  <div className="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center p-4">
+                    <button
+                      onClick={closeImageExpanded}
+                      className="absolute top-6 right-6 bg-gray-800 text-white p-3 rounded-full z-10 hover:bg-gray-700 transition-colors"
+                    >
+                      <X className="h-6 w-6" />
+                    </button>
+
+                    <div className="relative w-full max-w-6xl h-[90vh]">
+                      <img
+                        src={
+                          expandedImage?.url ||
+                          "https://placehold.co/600x400?text=Coming+Soon"
+                        }
+                        alt={expandedImage?.description || "Expanded Image"}
+                        className="w-full h-full object-contain"
+                      />
+                      <div className="absolute bottom-6 left-0 right-0 text-center text-white">
+                        <p className="text-base">
+                          {expandedImage?.description || "Expanded Image"}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </>
+            )}
+
+            {/* Amenities Tab Content */}
+            {activeTab === "amenities" && (
+              <AmenitiesSection
+                project={project}
+                showAllAmenities={showAllAmenities}
+                toggleAmenities={toggleAmenities}
+              />
+            )}
+
+            {/* Gallery Tab Content */}
+            {activeTab === "gallery" && (
+              <ProjectGallery
+                galleryImages={project.galleryImages}
+                openImageExpanded={openImageExpanded}
+              />
+            )}
+
+            {/* Location Tab Content */}
+            {activeTab === "location" && (
+              <ProjectLocation
+                project={project}
+              />
+            )}
+
+            {/* Project Specifications Table Tab */}
+            {activeTab === "specifications" && (
+              <div className="bg-white rounded-2xl shadow-sm p-8 border border-gray-100">
+                <div className="md:grid-cols-2 gap-10">
+                  <div>
+                    <h3 className="text-lg font-medium mb-6 text-gray-900">
+                      <ProjectSpecificationTable
+                        specifications={project.projectSpecification}
+                        status={project.status}
+                      />
+                    </h3>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Right Column - Sidebar */}
+          <div className="space-y-8">
+            {/* Brochure Download Card */}
+           
+            <ProjectBrochure
+              project={project}
+              setShowFullForm={setShowFullForm}
+            /> 
+
+            {/* Enquire now */}
+            <ProjectInquiryCard setShowFullForm={setShowFullForm} />
+          </div>
         </div>
-      )}
 
-      {/* Amenities */}
-      {activeTab === "amenities" && (
-        <AmenitiesSection
-          project={project}
-          showAllAmenities={showAllAmenities}
-          toggleAmenities={toggleAmenities}
-        />
-      )}
-
-      {/* Gallery */}
-      {activeTab === "gallery" && (
-        <ProjectGallery
-          galleryImages={project.galleryImages}
-          openImageExpanded={openImageExpanded}
-        />
-      )}
-
-      {/* Location */}
-      {activeTab === "location" && (
-        <ProjectLocation project={project} />
-      )}
-
-      {/* Specifications */}
-      {activeTab === "specifications" && (
-        <div className="bg-white rounded-2xl shadow-sm p-8 border border-gray-100">
-          <h2 className="text-2xl font-semibold mb-8 text-gray-900">
-            Specifications
-          </h2>
-          <ProjectSpecificationTable
-            specifications={project.projectSpecification}
-            status={project.status}
-          />
-        </div>
-      )}
+        {/* <SimilarProject /> */}
+      </div>
 
       {/* Expanded Image Modal */}
       {expandedImage && (
@@ -85,7 +179,9 @@ const ProjectClientPage = ({ project }) => {
               className="w-full h-full object-contain"
             />
             <div className="absolute bottom-6 left-0 right-0 text-center text-white">
-              <p className="text-base">{expandedImage?.description}</p>
+              <p className="text-base">
+                {expandedImage?.description || "Expanded Image"}
+              </p>
             </div>
           </div>
         </div>
