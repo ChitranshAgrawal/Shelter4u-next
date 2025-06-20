@@ -6,6 +6,7 @@ import { HiLocationMarker } from "react-icons/hi";
 import { motion } from "framer-motion";
 import CountUp from "react-countup";
 import { Dropdown } from "primereact/dropdown";
+import '../project-page/style.css';
 
 function HomeFirstSection( { data } ) {
   const router = useRouter();

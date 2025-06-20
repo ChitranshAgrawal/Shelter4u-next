@@ -35,10 +35,10 @@ export default async function HomePage() {
       <HomeFirstSection
         data={homeFirstSectionData}
       />
+      <Recommended />
       <HomeSecondSection
         data={homeSecondSectionData}
       />
-      <Recommended />
       <HomeThirdSection
         data={homeThirdSectionData}
       />
