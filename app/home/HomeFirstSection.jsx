@@ -41,7 +41,7 @@ function HomeFirstSection( { data } ) {
     if (city && city !== "All Cities") {
       params.set("city", city);
     }
-    router.push(`/projects?${params.toString()}`);
+    router.push(`/search?${params.toString()}`);
   };
 
   const searchLocationRef = useRef(null);
@@ -223,7 +223,7 @@ function HomeFirstSection( { data } ) {
                             if (city && city !== "All Cities") {  
                               params.set("city", city);
                             }
-                            router.push(`/projects?${params.toString()}`);
+                            router.push(`/search?${params.toString()}`);
                             setSuggestions({
                               value: "",
                               areas: [],
@@ -249,7 +249,7 @@ function HomeFirstSection( { data } ) {
                                 if (city && city !== "All Cities") {
                                   params.set("city", city);
                                 }
-                                router.push(`/projects?${params.toString()}`);
+                                router.push(`/search?${params.toString()}`);
                                 setSuggestions({
                                   value: "",
                                   areas: [],
@@ -276,7 +276,7 @@ function HomeFirstSection( { data } ) {
                               onClick={() => {
                                 const params = new URLSearchParams();
                                 params.set("city", city);
-                                router.push(`/projects?${params.toString()}`);
+                                router.push(`/search?${params.toString()}`);
                                 setSuggestions({
                                   value: "",
                                   areas: [],
