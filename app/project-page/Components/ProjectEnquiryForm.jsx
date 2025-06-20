@@ -34,7 +34,7 @@ const PropertyEnquiryForm = ({
     setIsSubmitting(true);
 
     try {
-      const response = await fetch(`${baseUrl}/api/project-page`, {
+      const response = await fetch(`${baseUrl}/api/project-page/${projectId}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -91,9 +91,7 @@ const PropertyEnquiryForm = ({
             <h2 className="text-2xl font-bold text-gray-900">
               Enquire About This Property
             </h2>
-            {projectName && (
-              <p className="text-gray-600 mt-2">{projectName}</p>
-            )}
+            
           </div>
 
           {formSubmitted ? (
