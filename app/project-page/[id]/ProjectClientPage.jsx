@@ -5,7 +5,7 @@ import ProjectTabSwitcher from "../Components/ProjectPageTabSwitcher.jsx";
 import AmenitiesSection from "../Components/ProjectAmenities.jsx";
 import ProjectGallery from "../Components/ProjectGallery.jsx";
 import ProjectLocation from "../Components/ProjectLocation.jsx";
-// import ProjectSpecificationTable from "../Components/ProjectSpecificationTable.jsx";
+import ProjectSpecificationTable from "../Components/ProjectSpecification.jsx";
 import { X } from "lucide-react";
 
 const ProjectClientPage = ({ project }) => {
@@ -53,7 +53,7 @@ const ProjectClientPage = ({ project }) => {
       )}
 
       {/* Specifications */}
-      {/* {activeTab === "specifications" && (
+      {activeTab === "specifications" && (
         <div className="bg-white rounded-2xl shadow-sm p-8 border border-gray-100">
           <h2 className="text-2xl font-semibold mb-8 text-gray-900">
             Specifications
@@ -63,7 +63,7 @@ const ProjectClientPage = ({ project }) => {
             status={project.status}
           />
         </div>
-      )} */}
+      )}
 
       {/* Expanded Image Modal */}
       {expandedImage && (
