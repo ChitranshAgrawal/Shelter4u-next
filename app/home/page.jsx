@@ -31,15 +31,14 @@ export default async function HomePage() {
   return (
     <>
     <Header/>
-      {section && (
-        <HomeSecondSection
-          title={section?.title}
-          redTitle={section?.redTitle}
-          para={section?.para}
-          bigImg={section?.bigImg}
-          smallImg={section?.smallImg}
-        />
-      )}
+    
+      <HomeSecondSection
+        title={section?.title}
+        redTitle={section?.redTitle}
+        para={section?.para}
+        bigImg={section?.bigImg}
+        smallImg={section?.smallImg}
+      />
       <Recommended />
       <HomeThirdSection data={company} />
       <HomeFourthSection
@@ -47,7 +46,6 @@ export default async function HomePage() {
         para={homeFourthSectionData?.para}
         section={homeFourthSectionData?.section}
       />
-      
       <HomeFifthSection partners={homeFifthSectionData} />
       
     </>

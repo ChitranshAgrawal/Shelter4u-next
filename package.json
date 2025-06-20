@@ -12,10 +12,14 @@
     "@tailwindcss/line-clamp": "^0.4.4",
     "cors": "^2.8.5",
     "dotenv": "^16.5.0",
+    "framer-motion": "^12.18.1",
+    "lucide-react": "^0.518.0",
     "mongoose": "^8.15.2",
     "next": "15.3.3",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "react-fast-marquee": "^1.6.5",
+    "react-icons": "^5.5.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
