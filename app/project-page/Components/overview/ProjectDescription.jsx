@@ -7,7 +7,7 @@ const AboutProject = ({ project }) => {
       <h2 className="text-2xl font-semibold mb-6 text-gray-900">
         About This Project
       </h2>
-      <pre className="text-gray-700 mb-8 text-base leading-relaxed whitespace-pre-wrap font-sans">
+      <pre className="text-gray-700 mb-8 text-base leading-relaxed whitespace-pre-wrap font-main">
         {project.description}
       </pre>
 

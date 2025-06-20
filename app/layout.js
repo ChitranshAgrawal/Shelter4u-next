@@ -11,6 +11,7 @@ const poppins = Poppins({
   weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
   style: ['normal', 'italic'],
   display: 'swap',
+  variable: '--font-poppins',
 });
 
 
@@ -24,11 +25,10 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" className="font-main">
       {/* <Header/> */}
 
-      <body
-        className={poppins.className}
+      <body 
       >
         {children}
       </body>
