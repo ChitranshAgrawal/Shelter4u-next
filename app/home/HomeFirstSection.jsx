@@ -12,6 +12,7 @@ function HomeFirstSection( { data } ) {
   const router = useRouter();
   const [location, setLocation] = useState("");
   const [city, setCity] = useState("");
+  const [isClient, setIsClient] = useState(false);
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
   const [suggestions, setSuggestions] = useState({
     value: "",
@@ -26,6 +27,10 @@ function HomeFirstSection( { data } ) {
 
   const firstLine = data.firstLine;
   const secondLine = data.secondLine;
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -333,15 +338,17 @@ function HomeFirstSection( { data } ) {
               {data.counts?.map((item, index) => (
                 <div key={index} className="text-center">
                   <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white">
-                    <CountUp
-                      start={item.start || 0} // Ensure start is defined
-                      end={item.end}
-                      duration={item.duration || 2.5} // Ensure duration is defined
-                      separator=","
-                      useEasing={true}
-                      enableScrollSpy={true}
-                      scrollSpyOnce={true}
-                    />
+                    {isClient ? (
+                        <CountUp
+                        start={item.start || 0}
+                        end={item.end}
+                        duration={item.duration || 2.5}
+                        separator=","
+                        useEasing={true}
+                        />
+                    ) : (
+                        item.end
+                    )}
                     <span className="text-white">+</span>
                   </h3>
                   <p className="text-sm md:text-base text-white/80">

@@ -26,13 +26,13 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className="font-main">
-      {/* <Header/> */}
 
       <body>
+        <Header/>
         {children}
+        <Footer/>
       </body>
 
-      {/* <Footer/> */}
     </html>
   );
 }

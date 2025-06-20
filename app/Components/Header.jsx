@@ -82,7 +82,7 @@ function Header() {
         {/* Navigation Links - Desktop */}
         <div className="hidden xl:flex space-x-1 lg:space-x-2">
           <Link
-            href="/home"
+            href="/"
             className="px-3 py-2 relative group transition-colors duration-300 cursor-pointer font-normal"
           >
             Home
