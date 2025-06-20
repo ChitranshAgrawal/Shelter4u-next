@@ -8,7 +8,7 @@ import Header from "../Components/Header.jsx";
 
 export default async function HomePage() {
   let section = null;
-  let company = null;
+  let homeThirdSectionData = null;
   let homeFourthSectionData = null; 
   let homeFifthSectionData = null;
 
@@ -20,9 +20,9 @@ export default async function HomePage() {
     const json = await res.json();
 
     section = json.finalData.HomeSecondSectionData[0];
-    company = json.finalData.HomeThirdSectionData[0];
+    homeThirdSectionData = json.finalData.HomeThirdSectionData[0];
     homeFourthSectionData = json.finalData.HomeFourthSectionData[0];
-    homeFifthSectionData = json.finalData.HomeFifthSectionData; // usually an array
+    homeFifthSectionData = json.finalData.HomeFifthSectionData; 
 
   } catch (e) {
     console.error("Error loading Home data:", e);
@@ -41,7 +41,7 @@ export default async function HomePage() {
         />
       )}
       <Recommended />
-      <HomeThirdSection data={company} />
+      <HomeThirdSection data={homeThirdSectionData} />
       <HomeFourthSection
         title={homeFourthSectionData?.title}
         para={homeFourthSectionData?.para}
