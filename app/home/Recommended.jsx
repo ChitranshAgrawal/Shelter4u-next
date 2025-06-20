@@ -44,7 +44,7 @@ export default async function Recommended() {
           {projects.slice(0, 3).map((project) => (
             <div
               key={project._id}
-              className="shadow-sm rounded-lg hover:shadow-md bg-white rounded-xl shadow-lg"
+              className="hover:shadow-md bg-white rounded-xl shadow-lg"
             >
               <Cards
                 project={project}
