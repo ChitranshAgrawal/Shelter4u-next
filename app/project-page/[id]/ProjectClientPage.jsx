@@ -14,8 +14,10 @@ import ProjectDescription from "../Components/overview/ProjectDescription.jsx";
 import ProjectLayoutPlans from "../Components/overview/ProjectLayoutPlans.jsx";
 import ProjectBrochure from "../Components/ProjectBroucher.jsx";
 import ProjectInquiryCard from "../Components/ProjectInquiryCard.jsx";  
+import PropertyEnquiryForm from "../Components/ProjectEnquiryForm.jsx"
 
 const ProjectClientPage = ({ project }) => {
+  const [formSubmitted, setFormSubmitted] = useState(false);
   const [activeTab, setActiveTab] = useState("overview");
   const [showAllAmenities, setShowAllAmenities] = useState(false);
   const [expandedImage, setExpandedImage] = useState(null);
@@ -158,6 +160,21 @@ const ProjectClientPage = ({ project }) => {
 
         {/* <SimilarProject /> */}
       </div>
+
+     {showFullForm && (
+      <PropertyEnquiryForm
+        isOpen={showFullForm}
+        onClose={() => {
+          setShowFullForm(false);
+          setFormSubmitted(false); // Reset
+        }}
+        projectId={project._id}
+        projectName={project.projectName}
+        onSubmitSuccess={() => setFormSubmitted(true)}
+        onSubmitError={(msg) => console.error("Enquiry Error:", msg)}
+        formSubmitted={formSubmitted}
+      />
+    )}
 
       {/* Expanded Image Modal */}
       {expandedImage && (

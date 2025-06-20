@@ -1,12 +1,10 @@
 import { NextResponse } from "next/server";
 import { models } from "../../../../lib/connections.js";
-const { Project } = models;
+const { Project,Leads } = models;
 
 export async function GET(req, { params }) {
   try {
-    // Await params to resolve the Promise
     const { id } = await params;
-
     // Validate the id
     if (!id) {
       return NextResponse.json({ message: "Project ID is required" }, { status: 400 });
@@ -24,6 +22,24 @@ export async function GET(req, { params }) {
     return NextResponse.json({ error: "Internal server error" }, { status: 500 });
   }
 }
+
+
+export async function POST(request) {
+  try {
+    const body = await request.json();
+    const savedLead = await Leads.create(body); 
+    console.log(savedLead);
+    return NextResponse.json(savedLead);
+  } catch (error) {
+    console.error("API error:", error);
+    return NextResponse.json(
+      { success: false, message: "Failed to process enquiry" },
+      { status: 500 }
+    );
+  }
+}
+
+
 
 
 
