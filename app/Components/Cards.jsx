@@ -1,4 +1,4 @@
-'use client';
+"use client"
 
 import Link from 'next/link';
 import {
@@ -14,26 +14,25 @@ import {
   FiEdit,
   FiTrash2,
 } from "react-icons/fi";
-// import { FaRupeeSign } from "react-icons/fa";
-import { useState } from "react";
-
-const formatToIndianUnits = (num) => {
-  if (!num || num <= 0) return "On Request";
-  if (num >= 1e7) {
-    return `₹ ${(num / 1e7).toFixed(2)} Cr`;
-  } else if (num >= 1e5) {
-    return `₹ ${(num / 1e5).toFixed(2)} Lac`;
-  } else {
-    return `₹ ${num.toLocaleString("en-IN")}`;
-  }
-};
+import { FaRupeeSign } from "react-icons/fa";
+import {  useState } from "react";
 
 const Cards = ({project}) => {
 
   const [unit, setUnit] = useState("");
-  const {projectName, priceMin, priceMax, projectType, projectSpecification, status, coverImages, minSize, maxSize, builder, area, _id} = project
+  const {projectName, minPrice, projectType, projectSpecification, status, coverImages, minSize, maxSize, builder, area, _id} = project
   
   const unitTypes = [...new Set(project.projectSpecification.map((spec) => spec.unitType))].join(", ")
+  const formatToIndianUnits = (num) => {
+    if (!num || num <= 0) return "On Request";
+    if (num >= 1e7) {
+      return `₹ ${(num / 1e7).toFixed(2)} Cr`;
+    } else if (num >= 1e5) {
+      return `₹ ${(num / 1e5).toFixed(2)} Lac`;
+    } else {
+      return `₹ ${num.toLocaleString("en-IN")}`;
+    }
+  };
 
   const handleShare = async (e, id) => {
     e.preventDefault();
@@ -44,7 +43,7 @@ const Cards = ({project}) => {
     });
   };
 
-  const price = formatToIndianUnits(projectSpecification[0]?.price);
+  const price = formatToIndianUnits(minPrice);
 
   return (
     <div key={_id} className="relative w-full">
@@ -71,7 +70,7 @@ const Cards = ({project}) => {
                 "https://placehold.co/600x400?text=Coming+Soon"
               }
               alt={projectName}
-              className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+              className="w-full h-[100%] object-cover hover:scale-105 transition-transform duration-300"
             />
           </div>
 
@@ -84,10 +83,7 @@ const Cards = ({project}) => {
               </div>
               <div className="text-right flex-shrink-0">
                 <div className="text-red-600 text-2xl font-bold flex items-center justify-end">
-                  {/* <FaRupeeSign className="mr-1" size={18} /> */}
                   <span>
-                    {/* {priceMin?.toLocaleString("en-IN") || "0"} -{" "}
-                  {priceMax?.toLocaleString("en-IN") || "0"} */}
                     {price == "On Request" ? (
                       "On Request"
                     ) : (
@@ -96,15 +92,12 @@ const Cards = ({project}) => {
                         {price} <p className="text-sm ml-1">onwards</p>
                       </div>
                     )}
-                    {/* <div></div> */}
-
-                    {/* formatToIndianUnits(); */}
                   </span>
                 </div>
               </div>
             </div>
 
-            <div className="grid grid-cols-2 gap-2 mb-5">
+            <div className="grid grid-cols-2 mb-5">
               <div className="mt-3 flex items-center text-gray-60 0">
                 <FiGlobe className="h-4 w-4 text-red-600 mr-1" />
                 <span className="text-sm">
@@ -112,7 +105,7 @@ const Cards = ({project}) => {
                 </span>
               </div>
 
-              <div className="mt-3 flex items-center text-gray-600">
+              <div className="mt-3 flex items-center justify-end text-gray-600">
                 <FiMapPin className="h-4 w-4 text-red-600 mr-1" />
                 <span className="text-sm">{area ? area.name : "Unknown"}</span>
               </div>
@@ -125,6 +118,7 @@ const Cards = ({project}) => {
                   <p className="text-xs text-gray-500">Size</p>
                   <p className="text-sm font-medium">
                     {minSize ? minSize : ""} - {maxSize ? maxSize : ""}{" "}
+                    {/* {unit ? unit : ""} */}
                     {projectSpecification[0]?.measurementUnit || ""}
                   </p>
                 </div>
@@ -182,7 +176,3 @@ const Cards = ({project}) => {
 };
 
 export default Cards;
-
-
-
-
