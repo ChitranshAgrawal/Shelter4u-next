@@ -7,7 +7,7 @@ import Head from "../Components/Header.jsx";
 import Header from "../Components/Header.jsx";
 
 export default async function HomePage() {
-  let section = null;
+  let homeSecondSectionData = null;
   let homeThirdSectionData = null;
   let homeFourthSectionData = null; 
   let homeFifthSectionData = null;
@@ -19,7 +19,7 @@ export default async function HomePage() {
 
     const json = await res.json();
 
-    section = json.finalData.HomeSecondSectionData[0];
+    homeSecondSectionData = json.finalData.HomeSecondSectionData[0];
     homeThirdSectionData = json.finalData.HomeThirdSectionData[0];
     homeFourthSectionData = json.finalData.HomeFourthSectionData[0];
     homeFifthSectionData = json.finalData.HomeFifthSectionData; 
@@ -32,21 +32,16 @@ export default async function HomePage() {
   return (
     <>
     <Header/>
-      {section && (
-        <HomeSecondSection
-          title={section?.title}
-          redTitle={section?.redTitle}
-          para={section?.para}
-          bigImg={section?.bigImg}
-          smallImg={section?.smallImg}
-        />
-      )}
+    
+      <HomeSecondSection
+        data={homeSecondSectionData}
+      />
       <Recommended />
-      <HomeThirdSection data={homeThirdSectionData} />
+      <HomeThirdSection
+        data={homeThirdSectionData}
+      />
       <HomeFourthSection
-        title={homeFourthSectionData?.title}
-        para={homeFourthSectionData?.para}
-        section={homeFourthSectionData?.section}
+        data={homeFourthSectionData}
       />
       
       <HomeFifthSection partners={json.finalData.HomeFifthSectionData} />

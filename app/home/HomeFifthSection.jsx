@@ -15,6 +15,7 @@ const HomeFifthSection = ({ data = [] }) => {
 
         <Marquee speed={130}>
           {data.map((partner, index) => (
+          {data.map((partner, index) => (
             <div
               key={`${index}`}
               className="inline-flex items-center justify-center mx-2"

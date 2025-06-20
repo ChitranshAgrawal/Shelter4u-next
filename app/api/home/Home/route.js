@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { models } from "../../../../lib/connections.js";
 
 const {
+  HomeFirstSection,
   HomeSecondSection,
   HomeThirdSection,
   HomeFourthSection,
@@ -10,12 +11,14 @@ const {
 
 export async function GET() {
   try {
+    const HomeFirstSectionData = await HomeFirstSection.find();
     const HomeSecondSectionData = await HomeSecondSection.find();
     const HomeThirdSectionData = await HomeThirdSection.find();
     const HomeFourthSectionData = await HomeFourthSection.find();
     const HomeFifthSectionData = await HomeFifthSection.find();
 
     const finalData = {
+      HomeFirstSectionData,
       HomeSecondSectionData,
       HomeThirdSectionData,
       HomeFourthSectionData,
