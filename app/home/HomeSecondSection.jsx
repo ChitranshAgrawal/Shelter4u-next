@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 
-export default function HomeSecondSection( data ) {
+export default function HomeSecondSection( {data} ) {
   const router = useRouter();
 
   return (
