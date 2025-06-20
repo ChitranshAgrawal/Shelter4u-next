@@ -3,13 +3,13 @@
 import React from "react";
 import Marquee from "react-fast-marquee";
 
-const HomeFifthSection = ( {data = []} ) => {
+const HomeFifthSection = ({ data = [] }) => {
   return (
     <div className="py-16 px-4 sm:px-6 overflow-hidden">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col items-center justify-center mb-12">
           <p className="text-3xl font-bold text-gray-800 sm:text-4xl mb-2 text-center">
-            Our Authorized Partners
+            Our Authorized data
           </p>
         </div>
 

@@ -3,7 +3,7 @@
 import React from "react";
 import { FaQuoteRight, FaUserAlt } from "react-icons/fa";
 
-const HomeFourthSection = ( data ) => {
+const HomeFourthSection = ( {data} ) => {
   return (
     <div className="w-full bg-gray-100 py-16 px-4 md:px-16 font-sans ">
       <div className="max-w-7xl mx-auto grid gap-12 items-center px-4 lg:grid-cols-2">
