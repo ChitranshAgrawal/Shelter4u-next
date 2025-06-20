@@ -3,6 +3,16 @@ import 'primereact/resources/themes/lara-light-indigo/theme.css';
 import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
 
+
+import { Poppins } from 'next/font/google';
+
+const poppins = Poppins({
+  subsets: ['latin'],
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
+  display: 'swap',
+});
+
+
 import Header from "./Components/Header.jsx";
 import Footer from "./footer/page.jsx"; 
 
@@ -17,7 +27,7 @@ export default function RootLayout({ children }) {
       {/* <Header/> */}
 
       <body
-        className={'font-sans antialiased'}
+        className={'poppins.className'}
       >
         {children}
       </body>
@@ -26,3 +36,4 @@ export default function RootLayout({ children }) {
     </html>
   );
 }
+
