@@ -397,9 +397,7 @@ function HomeFirstSection( { data } ) {
           }
         }
 
-        /* Custom styling for PrimeReact Dropdown padding if needed (example) */
-        /* This is generally better done via PrimeReact's PT (PassThrough) options */
-        /*
+      
         :global(.p-dropdown) {
            // Target specific elements if className on Dropdown itself isn't enough
         }
