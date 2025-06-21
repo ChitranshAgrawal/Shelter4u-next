@@ -10,7 +10,7 @@ import ProjectLocation from "../Components/ProjectLocation.jsx";
 import ProjectSpecificationTable from "../Components/ProjectSpecification.jsx";
 import ProjectHeroSlider from "../Components/ProjectPageHeroSilder.jsx"; 
 import ProjectHighlights from "../Components/overview/ProjectHighlights.jsx";
-import AboutProject from "../Components/overview/ProjectDescription.jsx";
+import ProjectDescription from "../Components/overview/ProjectDescription.jsx";
 import ProjectLayoutPlans from "../Components/overview/ProjectLayoutPlans.jsx";
 import ProjectBrochure from "../Components/ProjectBroucher.jsx";
 import ProjectInquiryCard from "../Components/ProjectInquiryCard.jsx";  
@@ -67,7 +67,7 @@ const ProjectClientPage = ({ project }) => {
                 <ProjectHighlights project={project} />
 
                 {/* Description Section */}
-                <AboutProject project={project} />
+                <ProjectDescription project={project} />
 
                 {/* Layout Plans Section */}
                 <ProjectLayoutPlans project={project} openImageExpanded={openImageExpanded} />

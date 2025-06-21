@@ -50,7 +50,7 @@ const Cards = ({project}) => {
       {/* Status Tag */}
       <div className="absolute top-[14.25rem] -left-2 z-10">
         <div className="bg-red-600 text-white text-xs font-bold uppercase px-3 py-1 rounded-sm flex items-center shadow-lg relative">
-          <span>{status || "Available"}</span>
+          <span>{project.reraNumber}</span>
         </div>
         <div
           className="absolute top-full left-1 w-0 h-0"
