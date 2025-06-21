@@ -64,14 +64,16 @@ const Cards = ({project}) => {
       <div className="relative w-full overflow-hidden rounded-xl">
         <div className="bg-white overflow-hidden flex flex-col h-full ">
           <div className="relative h-60 w-full overflow-hidden">
-            <img
-              src={
-                coverImages[0]?.url ||
-                "https://placehold.co/600x400?text=Coming+Soon"
-              }
-              alt={projectName}
-              className="w-full h-[100%] object-cover hover:scale-105 transition-transform duration-300"
-            />
+            <Link href={`/project-page/${_id}`} className="w-full h-full">
+              <img
+                src={
+                  coverImages[0]?.url ||
+                  "https://placehold.co/600x400?text=Coming+Soon"
+                }
+                alt={projectName}
+                className="w-full h-[100%] object-cover hover:scale-105 transition-transform duration-300"
+              />
+            </Link>
           </div>
 
           <div className="p-5 pb-3 flex-1">
