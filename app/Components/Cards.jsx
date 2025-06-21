@@ -162,7 +162,7 @@ const Cards = ({project}) => {
                 href={`/project-page/${_id}`}
                 className="text-red-600 text-sm font-medium flex items-center hover:text-red-800 transition-colors"
               >
-                <FiEye className="mr-1" /> View Details
+              <FiEye className="mr-1" /> View Details
               </Link>
               <button onClick={(e) => handleShare(e, `${_id}`)} className="text-gray-600 text-sm font-medium flex items-center hover:text-gray-800 transition-colors">
                 <FiShare2 className="mr-1" /> Share
