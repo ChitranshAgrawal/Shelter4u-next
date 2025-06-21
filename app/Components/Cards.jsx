@@ -64,14 +64,16 @@ const Cards = ({project}) => {
       <div className="relative w-full overflow-hidden rounded-xl">
         <div className="bg-white overflow-hidden flex flex-col h-full ">
           <div className="relative h-60 w-full overflow-hidden">
-            <img
-              src={
-                coverImages[0]?.url ||
-                "https://placehold.co/600x400?text=Coming+Soon"
-              }
-              alt={projectName}
-              className="w-full h-[100%] object-cover hover:scale-105 transition-transform duration-300"
-            />
+            <Link href={`/project-page/${_id}`} className="w-full h-full">
+              <img
+                src={
+                  coverImages[0]?.url ||
+                  "https://placehold.co/600x400?text=Coming+Soon"
+                }
+                alt={projectName}
+                className="w-full h-[100%] object-cover hover:scale-105 transition-transform duration-300"
+              />
+            </Link>
           </div>
 
           <div className="p-5 pb-3 flex-1">
@@ -162,7 +164,7 @@ const Cards = ({project}) => {
                 href={`/project-page/${_id}`}
                 className="text-red-600 text-sm font-medium flex items-center hover:text-red-800 transition-colors"
               >
-                <FiEye className="mr-1" /> View Details
+              <FiEye className="mr-1" /> View Details
               </Link>
               <button onClick={(e) => handleShare(e, `${_id}`)} className="text-gray-600 text-sm font-medium flex items-center hover:text-gray-800 transition-colors">
                 <FiShare2 className="mr-1" /> Share

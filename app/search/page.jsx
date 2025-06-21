@@ -21,17 +21,19 @@ export default async function SearchPageServer({ searchParams }) {
     });
     
     const queryString = query.toString();
+
+    // console.log(queryString);
     
     // Fetch initial data on server
-    if (queryString) {
-      const response = await fetch(`${baseUrl}/api/search?${queryString}`, {
-        cache: 'no-store' // Ensure fresh data
-      });
-      
-      if (response.ok) {
-        initialProjects = await response.json();
-      }
+    const response = await fetch(`${baseUrl}/api/search?${queryString}`, {
+      cache: 'no-store' // Ensure fresh data
+    });
+    
+    if (response.ok) {
+      initialProjects = await response.json();
+      console.log("response", initialProjects);
     }
+    
   } catch (error) {
     console.error("Error fetching initial projects:", error);
     // Continue with empty array on error

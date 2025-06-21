@@ -22,6 +22,10 @@ const SearchPage = ({ initialProjects = [] }) => {
   const [projects, setProjects] = useState(initialProjects);
   const [showSuggestions, setShowSuggestions] = useState(false);
   const searchRef = useRef(null);
+  const [isClient, setIsClient] = useState(false);
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
   const [filters, setFilters] = useState({
     moveInDate: searchParams.get("moveInDate") || "",
     projectType: searchParams.get("projectType") || "",
@@ -147,7 +151,9 @@ const SearchPage = ({ initialProjects = [] }) => {
                 <FiMapPin className="text-red-600 text-xl" />
               </div>
               <div className="flex flex-col w-full relative">
-                <label className="text-xs font-medium text-gray-500 mb-1">Search</label>
+                <label className="text-xs font-medium text-gray-500 mb-1">
+                  Search
+                </label>
                 <input
                   type="text"
                   value={searchQuery}
@@ -168,19 +174,31 @@ const SearchPage = ({ initialProjects = [] }) => {
                     setSearchQuery(value);
 
                     if (value.length < 3) {
-                      setSuggestions({ value, areas: [], projects: [], cities: [] });
+                      setSuggestions({
+                        value,
+                        areas: [],
+                        projects: [],
+                        cities: [],
+                      });
                       setShowSuggestions(false);
                       return;
                     }
 
                     try {
-                      const res = await fetch(`${baseUrl}/api/search/autocomplete?q=${value}`);
+                      const res = await fetch(
+                        `${baseUrl}/api/search/autocomplete?q=${value}`
+                      );
                       const data = await res.json();
                       setSuggestions({ ...data, value });
                       setShowSuggestions(true);
                     } catch (err) {
                       console.error("Autocomplete error:", err);
-                      setSuggestions({ value: "", areas: [], projects: [], cities: [] });
+                      setSuggestions({
+                        value: "",
+                        areas: [],
+                        projects: [],
+                        cities: [],
+                      });
                       setShowSuggestions(false);
                     }
                   }}
@@ -190,7 +208,11 @@ const SearchPage = ({ initialProjects = [] }) => {
                     {suggestions.value && (
                       <div
                         className="px-4 py-2 hover:bg-gray-100 text-sm cursor-pointer"
-                        onClick={() => handleSuggestionClick(() => router.push(`/search?q=${suggestions.value}`))}
+                        onClick={() =>
+                          handleSuggestionClick(() =>
+                            router.push(`/search?q=${suggestions.value}`)
+                          )
+                        }
                       >
                         Search for "{suggestions.value}"
                       </div>
@@ -198,12 +220,16 @@ const SearchPage = ({ initialProjects = [] }) => {
 
                     {suggestions.areas.length > 0 && (
                       <>
-                        <div className="px-4 py-2 border-b border-gray-100 text-xs font-bold text-gray-500">Areas</div>
+                        <div className="px-4 py-2 border-b border-gray-100 text-xs font-bold text-gray-500">
+                          Areas
+                        </div>
                         {suggestions.areas.map((area) => (
                           <div
                             key={area._id}
                             onClick={() =>
-                              handleSuggestionClick(() => router.push(`/search?area=${area.name}`))
+                              handleSuggestionClick(() =>
+                                router.push(`/search?area=${area.name}`)
+                              )
                             }
                             className="px-4 py-2 hover:bg-gray-100 text-sm cursor-pointer"
                           >
@@ -215,13 +241,17 @@ const SearchPage = ({ initialProjects = [] }) => {
 
                     {suggestions.cities.length > 0 && (
                       <>
-                        <div className="px-4 py-2 border-b border-gray-100 text-xs font-bold text-gray-500">Cities</div>
+                        <div className="px-4 py-2 border-b border-gray-100 text-xs font-bold text-gray-500">
+                          Cities
+                        </div>
                         {suggestions.cities.map((city, index) => (
                           <div
                             key={index}
                             className="px-4 py-2 hover:bg-gray-100 text-sm cursor-pointer"
                             onClick={() =>
-                              handleSuggestionClick(() => router.push(`/search?city=${city}`))
+                              handleSuggestionClick(() =>
+                                router.push(`/search?city=${city}`)
+                              )
                             }
                           >
                             {city}
@@ -232,12 +262,16 @@ const SearchPage = ({ initialProjects = [] }) => {
 
                     {suggestions.projects.length > 0 && (
                       <>
-                        <div className="px-4 py-2 border-b border-gray-100 text-xs font-bold text-gray-500">Projects</div>
+                        <div className="px-4 py-2 border-b border-gray-100 text-xs font-bold text-gray-500">
+                          Projects
+                        </div>
                         {suggestions.projects.map((project) => (
                           <div
                             key={project._id}
                             onClick={() =>
-                              handleSuggestionClick(() => router.push(`/project-page/${project._id}`))
+                              handleSuggestionClick(() =>
+                                router.push(`/project-page/${project._id}`)
+                              )
                             }
                             className="px-4 py-2 hover:bg-gray-100 text-sm cursor-pointer"
                           >
@@ -260,10 +294,14 @@ const SearchPage = ({ initialProjects = [] }) => {
                 <FiHome className="text-red-600 text-xl" />
               </div>
               <div className="flex flex-col w-full relative">
-                <label className="text-xs font-medium text-gray-500 mb-1">Project Type</label>
+                <label className="text-xs font-medium text-gray-500 mb-1">
+                  Project Type
+                </label>
                 <select
                   value={filters.projectType}
-                  onChange={(e) => handleFilterChange("projectType", e.target.value)}
+                  onChange={(e) =>
+                    handleFilterChange("projectType", e.target.value)
+                  }
                   className="text-sm font-medium text-gray-800 focus:outline-none rounded-md py-1 pl-3 pr-8 w-full appearance-none bg-white transition-colors"
                 >
                   <option value="">All Types</option>
@@ -283,10 +321,14 @@ const SearchPage = ({ initialProjects = [] }) => {
                 <FiGrid className="text-red-600 text-xl" />
               </div>
               <div className="flex flex-col w-full relative">
-                <label className="text-xs font-medium text-gray-500 mb-1">Unit Type</label>
+                <label className="text-xs font-medium text-gray-500 mb-1">
+                  Unit Type
+                </label>
                 <select
                   value={filters.unitType}
-                  onChange={(e) => handleFilterChange("unitType", e.target.value)}
+                  onChange={(e) =>
+                    handleFilterChange("unitType", e.target.value)
+                  }
                   className="text-sm font-medium text-gray-800 focus:outline-none rounded-md py-1 pl-3 pr-8 w-full appearance-none bg-white transition-colors"
                 >
                   <option value="">Any</option>
@@ -306,12 +348,16 @@ const SearchPage = ({ initialProjects = [] }) => {
                 <FiTag className="text-red-600 text-xl" />
               </div>
               <div className="flex flex-col w-full">
-                <label className="text-xs font-medium text-gray-500 mb-1">Price Range (₹)</label>
+                <label className="text-xs font-medium text-gray-500 mb-1">
+                  Price Range (₹)
+                </label>
                 <div className="flex items-center w-full space-x-2">
                   <input
                     type="number"
                     value={filters.minBudget}
-                    onChange={(e) => handleFilterChange("minBudget", e.target.value)}
+                    onChange={(e) =>
+                      handleFilterChange("minBudget", e.target.value)
+                    }
                     placeholder="Min"
                     className="text-sm font-medium text-gray-800 focus:outline-none border-b border-gray-200 pb-1 w-1/2 focus:border-red-500 transition-colors"
                   />
@@ -319,7 +365,9 @@ const SearchPage = ({ initialProjects = [] }) => {
                   <input
                     type="number"
                     value={filters.maxBudget}
-                    onChange={(e) => handleFilterChange("maxBudget", e.target.value)}
+                    onChange={(e) =>
+                      handleFilterChange("maxBudget", e.target.value)
+                    }
                     placeholder="Max"
                     className="text-sm font-medium text-gray-800 focus:outline-none border-b border-gray-200 pb-1 w-1/2 focus:border-red-500 transition-colors"
                   />
@@ -341,15 +389,9 @@ const SearchPage = ({ initialProjects = [] }) => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects && projects.length > 0 ? (
             projects.map((project) => (
-              <Link
-                href={`/project-page/${project._id}`}
-                key={project._id}
-                className="hover:scale-105 transition-transform duration-300"
-              >
-                <div className="bg-white rounded-xl shadow-lg">
-                  <Cards project={project} />
+                <div key={project._id} className="bg-white rounded-xl shadow-lg">
+                  {isClient && <Cards project={project} />}
                 </div>
-              </Link>
             ))
           ) : (
             <div className="col-span-3 text-center text-gray-500">
@@ -363,7 +405,3 @@ const SearchPage = ({ initialProjects = [] }) => {
 };
 
 export default SearchPage;
-
-
-
-
