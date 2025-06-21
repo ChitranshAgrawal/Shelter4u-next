@@ -32,7 +32,7 @@ export default async function Recommended() {
               The Perfect Project Hub for your next home
             </p>
           </div>
-          <a href="/projects" className="text-red-600 font-medium hover:underline">
+          <a href="/search" className="text-red-600 font-medium hover:underline">
             View all Projects →
           </a>
         </div>

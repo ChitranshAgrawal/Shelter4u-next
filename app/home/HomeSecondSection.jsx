@@ -9,7 +9,7 @@ export default function HomeSecondSection( {data} ) {
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <div className="mx-auto px-20 py-12 sm:py-16 flex flex-col md:flex-row items-center justify-around sm:gap-10 max-w-8xl">
         {/* Left Section - Text */}
-        <div className="w-full md:w-2/5 text-center md:text-left px-2 sm:px-4">
+        <div className="w-full md:w-2/5 text-center md:text-left px-2 sm:px-4 pb-10">
           <h1 className="text-3xl sm:text-3xl md:text-5xl font-bold text-gray-800 mb-4 leading-snug">
             {data.title} <span className="text-red-600">{data.redTitle}</span>
           </h1>

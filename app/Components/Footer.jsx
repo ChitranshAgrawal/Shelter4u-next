@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { MapPin, Mail, Phone } from "lucide-react";
+import { FaFacebookF, FaTwitter, FaInstagram } from "react-icons/fa";
 
 const Footer = ({ footerData }) => {
   return (
@@ -121,26 +122,26 @@ const Footer = ({ footerData }) => {
 
         {/* SOCIAL + COPYRIGHT */}
         <div className="pt-4 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-gray-400">{footerData.rights}</p>
-          <div className="flex space-x-4 mt-4 md:mt-0">
-            {[
-              { href: footerData.facebookLink, label: "Facebook" },
-              { href: footerData.twitterLink, label: "Twitter" },
-              { href: footerData.instaLink, label: "Instagram" },
-            ].map(({ href, label }, i) => (
-              <a
-                key={i}
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={label}
-                className="border border-gray-700 rounded-sm p-2 hover:bg-gray-800 hover:border-purple-400 transition-all"
-              >
-                <span className="text-sm text-gray-300">{label}</span>
-              </a>
-            ))}
-          </div>
-        </div>
+  <p className="text-gray-400">{footerData.rights}</p>
+  <div className="flex space-x-4 mt-4 md:mt-0">
+    {[
+      { href: footerData.facebookLink, icon: <FaFacebookF />, label: "Facebook" },
+      { href: footerData.twitterLink, icon: <FaTwitter />, label: "Twitter" },
+      { href: footerData.instaLink, icon: <FaInstagram />, label: "Instagram" },
+    ].map(({ href, icon, label }, i) => (
+      <a
+        key={i}
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={label}
+        className="border border-gray-700 rounded-sm p-2 hover:bg-gray-800 hover:border-purple-400 transition-all text-gray-300 text-xl"
+      >
+        {icon}
+      </a>
+    ))}
+  </div>
+</div>
       </div>
     </footer>
   );

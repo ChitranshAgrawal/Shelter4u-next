@@ -28,7 +28,6 @@ export async function POST(request) {
   try {
     const body = await request.json();
     const savedLead = await Leads.create(body); 
-    console.log(savedLead);
     return NextResponse.json(savedLead);
   } catch (error) {
     console.error("API error:", error);
