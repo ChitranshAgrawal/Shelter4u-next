@@ -371,7 +371,7 @@ function Header() {
                 </svg>
               </button>
 
-              <div className={`transition-all duration-300 ${activeDropdown === "aboutUs" ? "show" : "hide"}`}>
+              <div className={`transition-all duration-300 ${activeDropdown === "aboutUs" ? "max-h-96 opacity-100" : "max-h-0 opacity-0"} overflow-hidden`}>
                 <div className="pl-4 py-1 bg-gray-50 rounded-md mt-1 mb-1 space-y-1">
                   <Link
                     href="/about/companyProfile"
@@ -443,9 +443,7 @@ function Header() {
                 </svg>
               </button>
 
-              <div
-                className={`transition-all duration-300 ${activeDropdown === "location" ? "show" : "hide"}`}
-              >
+              <div className={`transition-all duration-300 ${activeDropdown === "location" ? "max-h-96 opacity-100" : "max-h-0 opacity-0"} overflow-hidden`}>
                 <div className="pl-4 py-1 bg-gray-50 rounded-md mt-1 mb-1 space-y-1">
                   <Link
                     href="/search?city=ahmedabad"
@@ -503,9 +501,7 @@ function Header() {
                 </svg>
               </button>
 
-              <div
-                className={`transition-all duration-300 ${activeDropdown === "type" ? "show" : "hide"}`}
-              >
+              <div className={`transition-all duration-300 ${activeDropdown === "type" ? "max-h-96 opacity-100" : "max-h-0 opacity-0"} overflow-hidden`}>
                 <div className="pl-4 py-1 bg-gray-50 rounded-md mt-1 mb-1 space-y-1">
                   <Link
                     href="/search?projectType=Residential"
@@ -568,11 +564,7 @@ function Header() {
                 </svg>
               </button>
 
-              <div
-                className={`transition-all duration-300 ${
-                  activeDropdown === "others" ? "show" : "hide"
-                }`}
-              >
+              <div className={`transition-all duration-300 ${activeDropdown === "others" ? "max-h-96 opacity-100" : "max-h-0 opacity-0"} overflow-hidden`}>
                 <div className="pl-4 py-1 bg-gray-50 rounded-md mt-1 mb-1 space-y-1">
                   <Link
                     href="/others/loansForNRI"
@@ -593,7 +585,7 @@ function Header() {
             </div>
 
             <Link
-              href="/contact"
+              href="/contactus"
               onClick={closeMobileMenu}
               className={`w-full px-3 py-2 ${
                 isActive("/contact")
@@ -612,6 +604,10 @@ function Header() {
         .animate-fadeIn {
           animation: fadeIn 0.2s ease-in-out;
         }
+        
+        .animate-slideDown {
+          animation: slideDown 0.3s ease-in-out;
+        }
 
         @keyframes fadeIn {
           from {
@@ -620,6 +616,19 @@ function Header() {
           }
           to {
             opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        
+        @keyframes slideDown {
+          from {
+            opacity: 0;
+            max-height: 0;
+            transform: translateY(-10px);
+          }
+          to {
+            opacity: 1;
+            max-height: 500px;
             transform: translateY(0);
           }
         }

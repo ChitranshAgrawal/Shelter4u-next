@@ -19,7 +19,7 @@ export default function ContactUsPage() {
   });
 
   const [formData, setFormData] = useState({
-    name: "" ,
+    name: "",
     email: "",
     mobile: "",
     message: "",
@@ -98,7 +98,8 @@ export default function ContactUsPage() {
             home.
           </p>
 
-          <div className="grid grid-cols-2 gap-6 mb-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
+            {/* Phone Number */}
             <div className="flex items-start gap-4">
               <div className="bg-red-100 text-red-600 text-xl p-3 rounded-md">
                 <RiPhoneLine />
@@ -113,21 +114,25 @@ export default function ContactUsPage() {
               </div>
             </div>
 
-            <div className="flex items-start gap-4">
-              <div className="bg-red-100 text-red-600 text-xl p-3 rounded-md">
+            {/* Email */}
+            <div className="flex flex-wrap md:flex-nowrap items-start gap-4 w-full max-w-2xl">
+              <div className="bg-red-100 text-red-600 text-xl p-3 rounded-md flex-shrink-0">
                 <RiMailLine />
               </div>
-              <div>
-                <h4 className="font-semibold">Email Address</h4>
+              <div className="flex-1 min-w-[200px]">
+                <h4 className="font-semibold text-base md:text-lg">
+                  Email Address
+                </h4>
                 {contactUs.mail.map((email, i) => (
-                  <p key={i} className="text-sm text-gray-500">
+                  <p key={i} className="text-sm text-gray-500 break-all">
                     {email}
                   </p>
                 ))}
               </div>
             </div>
 
-            <div className="flex items-start gap-4">
+            {/* Address */}
+            <div className="flex items-start gap-4 sm:col-span-2">
               <div className="bg-red-100 text-red-600 text-xl p-3 rounded-md">
                 <RiMapPinLine />
               </div>
@@ -139,8 +144,10 @@ export default function ContactUsPage() {
           </div>
 
           <hr className="mb-7 text-gray-300" />
-          <div className="flex items-center text-2xl gap-4">
-            <p className="font-semibold">Social Media</p>
+
+          {/* Social Media */}
+          <div className="flex items-center text-2xl gap-4 flex-wrap">
+            <p className="font-semibold">Social Media</p> 
             {contactUs.facebookLink && (
               <a
                 href={contactUs.facebookLink}
@@ -189,7 +196,6 @@ export default function ContactUsPage() {
         </div>
       </div>
 
-      {/* Google Map */}
       {/* Google Map */}
       {contactUs.embedLink && (
         <div className="w-full mt-8">

@@ -25,7 +25,7 @@ export async function GET() {
       HomeFifthSectionData,
     };
 
-    console.log(finalData);
+   
 
     return NextResponse.json({ success: true, finalData }, { status: 200 });
   } catch (error) {
