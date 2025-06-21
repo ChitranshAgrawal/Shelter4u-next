@@ -2,7 +2,7 @@ import PrivacyPolicyClient from './PrivacyPolicyClient';
 
 export default async function PrivacyPolicyPage() {
   const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/about/privacyPolicy`, {
-    cache: 'no-store',
+    cache: 'force-cache',
   });
 
   if (!res.ok) {

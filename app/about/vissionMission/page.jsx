@@ -7,7 +7,7 @@ export default async function VisionMissionPage() {
 
   try {
     const res = await fetch(`${API}/api/about/vissionMission`, {
-      cache: "no-store",
+      cache: "force-cache",
     });
     if (!res.ok) throw new Error("Failed to fetch");
 

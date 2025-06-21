@@ -3,7 +3,7 @@ import LegalInformationClient from "./LegalInformationClient.jsx";
 
 export default async function LegalPage() {
   const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/others/LegalInfo`, {
-    cache: "no-store", 
+    cache: "force-cache", 
   });
 
   if (!res.ok) {

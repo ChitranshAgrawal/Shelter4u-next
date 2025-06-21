@@ -2,7 +2,7 @@ import CareerClient from './CareerClient';
 
 export default async function CareerPage() {
   const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/about/career`, {
-    cache: 'no-store',
+    cache: 'force-cache',
   });
 
   if (!res.ok) {

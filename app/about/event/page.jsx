@@ -2,7 +2,7 @@ import EventClient from './EventClient.jsx';
 
 export default async function EventPage() {
   const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/about/event`, {
-    cache: 'no-store',
+    cache: 'force-cache',
   });
 
   if (!res.ok) {

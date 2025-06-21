@@ -2,7 +2,7 @@ import Footer from "../Components/Footer.jsx";
 
 export default async function FooterPage() {
   const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/footer`, {
-    cache: "no-store",
+    cache: "force-cache",
   });
 
   if (!res.ok) {

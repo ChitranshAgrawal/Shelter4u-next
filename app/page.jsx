@@ -9,7 +9,7 @@ import Recommended from "./home/Recommended.jsx";
 async function fetchRecommendedProjects() {
   try {
     const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/home/Recommended`, {
-      cache: "no-store",
+      cache: "force-cache",
     });
 
     if (!res.ok) throw new Error("Failed to fetch recommended projects");
@@ -32,7 +32,7 @@ export default async function HomePage() {
 
   try {
     const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/home/Home`, {
-      cache: "no-store",
+      cache: "force-cache",
     });
 
     const json = await res.json();

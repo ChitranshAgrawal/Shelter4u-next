@@ -26,7 +26,7 @@ export default async function SearchPageServer({ searchParams }) {
     
     // Fetch initial data on server
     const response = await fetch(`${baseUrl}/api/search?${queryString}`, {
-      cache: 'no-store' // Ensure fresh data
+      cache: 'force-cache' // Ensure fresh data
     });
     
     if (response.ok) {
