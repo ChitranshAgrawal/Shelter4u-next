@@ -2,7 +2,7 @@ import { models } from "../../../../lib/connections.js";
 // import { connectToDBs, Project, Area, Leads } from '@/lib/connections.js';
 const { Project } = models;
 
-export async function GET(req) {
+export async function GET() {
   try {
     // await connectToDBs();
 
